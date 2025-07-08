@@ -7,7 +7,7 @@ using TaskManagement.Core.Domain.Tasks;
 
 namespace TaskManagement.Core.ApplicationServices
 {
-    public class TaskService
+    public class TaskService : ITaskService
     {
         private readonly ITaskRepository _repo;
 
@@ -22,7 +22,7 @@ namespace TaskManagement.Core.ApplicationServices
         public async Task<Taska?> GetByIdAsync(int id) =>
             await _repo.GetByIdAsync(id);
 
-        public async Task<Taska> CreateAsync(Taska t)
+        public Task<Taska> CreateAsync(Taska t)
         {
             t.CreatedDate = DateTime.Now;
             await _repo.AddAsync(t);
@@ -49,6 +49,5 @@ namespace TaskManagement.Core.ApplicationServices
             await _repo.DeleteAsync(id);
             return true;
         }
-
     }
 }

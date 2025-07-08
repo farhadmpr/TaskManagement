@@ -8,7 +8,7 @@ using TaskManagement.Core.Domain.Tasks;
 
 namespace TaskManagement.Infra.Data.EF.SqlServer.Repositories
 {
-    public class TaskRepository
+    public class TaskRepository : ITaskRepository
     {
         private readonly AppDbContext _db;
 

@@ -1,11 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TaskManagement.Core.ApplicationServices;
 using TaskManagement.Core.Domain.Tasks;
 using TaskManagement.Infra.Data.EF.SqlServer;
+using TaskManagement.Infra.Data.EF.SqlServer.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConn")));
+
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<ITaskService, TaskService>();
 
 var app = builder.Build();
 
@@ -84,3 +89,5 @@ app.Run(async context =>
     context.Response.StatusCode = 404;
     await context.Response.WriteAsync("Not Found");
 });
+
+app.Run();

@@ -10,7 +10,7 @@ namespace TaskManagement.Core.Domain.Tasks
     {
         Task<List<Taska>> GetAllAsync();
         Task<Taska?> GetByIdAsync(int id);
-        Task<Taska> CreateAsync(Task task);
+        Task<Taska> CreateAsync(Taska task);
         Task<bool> UpdateAsync(int id, Taska updatedTask);
         Task<bool> DeleteAsync(int id);
 
