@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManagement.Core.Contracts.Services;
+using TaskManagement.Core.Domain.Repositories;
 using TaskManagement.Core.Domain.Tasks;
 
 namespace TaskManagement.Core.ApplicationServices
@@ -22,7 +24,7 @@ namespace TaskManagement.Core.ApplicationServices
         public async Task<Taska?> GetByIdAsync(int id) =>
             await _repo.GetByIdAsync(id);
 
-        public Task<Taska> CreateAsync(Taska t)
+        public async Task<Taska> CreateAsync(Taska t)
         {
             t.CreatedDate = DateTime.Now;
             await _repo.AddAsync(t);

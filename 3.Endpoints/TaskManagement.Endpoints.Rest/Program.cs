@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskManagement.Core.ApplicationServices;
+using TaskManagement.Core.Contracts.Services;
+using TaskManagement.Core.Domain.Repositories;
 using TaskManagement.Core.Domain.Tasks;
 using TaskManagement.Infra.Data.EF.SqlServer;
 using TaskManagement.Infra.Data.EF.SqlServer.Repositories;
@@ -49,7 +51,7 @@ app.Run(async context =>
     // POST /tasks
     if (path == "/tasks" && method == "POST")
     {
-        var task = await context.Request.ReadFromJsonAsync<Task>();
+        var task = await context.Request.ReadFromJsonAsync<Taska>();
         if (task == null)
         {
             context.Response.StatusCode = 400;

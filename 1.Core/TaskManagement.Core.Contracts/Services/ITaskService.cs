@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManagement.Core.Domain.Tasks;
 
-namespace TaskManagement.Core.Domain.Tasks
+namespace TaskManagement.Core.Contracts.Services
 {
     public interface ITaskService
     {
